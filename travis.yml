@@ -10,7 +10,7 @@ env:
   global:
   - CF_API=https://api.ng.bluemix.net/
   - CF_USERNAME=peter.stevenson@ecomscotland.com
-  - CF_ORG=random-dev
+  - CF_ORG=peter.stevenson@ecomscotland.com
   - CF_SPACE=dev
 before_deploy:
   - wget https://s3.amazonaws.com/go-cli/releases/v6.12.4/cf-cli_amd64.deb -qO temp.deb && sudo dpkg -i temp.deb
@@ -25,4 +25,8 @@ deploy:
     script: if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then cf zero-downtime-push <My-app> -f ./manifest.yml; else echo "PR skip deploy"; fi
     skip_cleanup: true
     on:
+<<<<<<< HEAD
       branch: master
+=======
+      branch: master
+>>>>>>> 565e1e5444655e6e99c00cfe1d42d846b4e16a1f
