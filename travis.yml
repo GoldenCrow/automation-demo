@@ -9,24 +9,19 @@ cache:
 env:
   global:
   - CF_API=https://api.ng.bluemix.net/
-  - CF_USERNAME=peter.stevenson@ecomscotland.com
-  - CF_ORG=peter.stevenson@ecomscotland.com
+  - CF_USERNAME=peter.stevenson1814@gmail.com
+  - CF_ORG=random-dev
   - CF_SPACE=dev
 before_deploy:
   - wget https://s3.amazonaws.com/go-cli/releases/v6.12.4/cf-cli_amd64.deb -qO temp.deb && sudo dpkg -i temp.deb
   - rm temp.deb
-  - cf api https://api.eu-gb.bluemix.net
   - cf login -a ${CF_API} -u ${CF_USERNAME} -p ${BLUEMIX_PASSWORD} -o ${CF_ORG} -s ${CF_SPACE}
   - cf install-plugin autopilot -r CF-Community
   - yarn build
 deploy:
   - edge: true
     provider: script
-    script: if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then cf zero-downtime-push <My-app> -f ./manifest.yml; else echo "PR skip deploy"; fi
+    script: if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then cf zero-downtime-push automation-demo -f ./manifest.yml; else echo "PR skip deploy"; fi
     skip_cleanup: true
     on:
-<<<<<<< HEAD
       branch: master
-=======
-      branch: master
->>>>>>> 565e1e5444655e6e99c00cfe1d42d846b4e16a1f
