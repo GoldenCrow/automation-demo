@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "babel-watch": "^2.0.6",
+    "concurrently": "^3.4.0",
     "react-scripts": "0.9.4"
   },
   "dependencies": {
@@ -14,10 +16,18 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2"
   },
+  "proxy": "http://localhost:8081",
   "scripts": {
-    "start": "react-scripts start",
+    "bluemix": "babel-node index.js",
+    "start": "concurrently \"PORT=8080 react-scripts start\" \"PORT=8081 babel-watch index.js\"",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "stage-2"
+    ]
   }
 }
