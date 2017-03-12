@@ -8,7 +8,7 @@ cache:
     - node_modules
 env:
   global:
-  - CF_API=https://api.ng.bluemix.net/
+  - CF_API=https://api.eu-bg.bluemix.net/
   - CF_USERNAME=peter.stevenson1814@gmail.com
   - CF_ORG=random-dev
   - CF_SPACE=dev
